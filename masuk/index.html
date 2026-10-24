@@ -27,27 +27,20 @@
     <!-- Login. Prototype: any input signs in (js/auth.js); there is no account service yet. -->
     <section class="auth section--satin theme-dark" aria-labelledby="auth-title">
       <div class="container">
-        <a class="auth__logo" href="/">
-          <img src="/assets/home/logo.png" alt="Pria Punya Selera — Beranda" width="404" height="304">
-        </a>
         <div class="auth__card surface panel">
-          <h1 class="auth__title" id="auth-title">
-            <span class="line">Masuk ke</span>
-            <span class="line text-accent">akun lo.</span>
-          </h1>
-          <p class="auth__lead">Cek poin, baca artikel, daftar event, dan tukar hadiah dari satu akun.</p>
+          <h1 class="auth__title" id="auth-title">Masuk ke akun lo</h1>
           <p class="auth__notice" role="status" data-auth-reason hidden></p>
 
-          <form class="form" data-auth-form="login" novalidate>
+          <form class="form" data-auth-form="login" autocomplete="off" novalidate>
               <div class="field">
                 <label class="field__label" for="identifier">Username atau nomor WhatsApp</label>
-                <input class="field__input" id="identifier" name="identifier" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required aria-describedby="identifier-error">
+                <input class="field__input" id="identifier" name="identifier" type="text" autocomplete="off" data-lpignore="true" data-1p-ignore data-bwignore data-form-type="other" autocapitalize="none" spellcheck="false" required aria-describedby="identifier-error">
                 <p class="field__error" id="identifier-error" data-error-for="identifier"></p>
               </div>
               <div class="field">
                 <label class="field__label" for="password">Password</label>
                 <div class="field__control">
-                  <input class="field__input" id="password" name="password" type="password" autocomplete="current-password" required aria-describedby="password-error">
+                  <input class="field__input field__input--masked" id="password" name="password" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" data-lpignore="true" data-1p-ignore data-bwignore data-form-type="other" required aria-describedby="password-error">
                   <button class="field__toggle" type="button" aria-controls="password" aria-pressed="false" aria-label="Tampilkan password" data-password-toggle><svg class="field__toggle-show" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></svg><svg class="field__toggle-hide" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 18M10.6 5.6A10 10 0 0 1 12 5.5c6 0 9.5 6.5 9.5 6.5a17 17 0 0 1-3 3.8M6.4 6.9A17 17 0 0 0 2.5 12S6 18.5 12 18.5a9.6 9.6 0 0 0 4.4-1.1M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg></button>
                 </div>
                 <p class="field__error" id="password-error" data-error-for="password"></p>

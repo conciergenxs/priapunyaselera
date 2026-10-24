@@ -38,12 +38,22 @@ export const init = (root) => {
     notice.hidden = false;
   }
 
+  // Password fields are masked text fields (.field__input--masked), so browsers
+  // and password managers don't offer saved or generated passwords, or ask to
+  // save the account. Without CSS masking support, fall back to a real
+  // password field so the value is never shown in plain text.
+  const cssMask = CSS.supports("-webkit-text-security", "disc");
+  root.querySelectorAll(".field__input--masked").forEach((input) => {
+    if (!cssMask) input.type = "password";
+  });
+
   // Show / hide password.
   root.querySelectorAll("[data-password-toggle]").forEach((toggle) => {
     const input = form.elements[toggle.getAttribute("aria-controls")];
     toggle.addEventListener("click", () => {
-      const show = input.type === "password";
-      input.type = show ? "text" : "password";
+      const show = toggle.getAttribute("aria-pressed") !== "true";
+      if (cssMask) input.classList.toggle("is-revealed", show);
+      else input.type = show ? "text" : "password";
       toggle.setAttribute("aria-pressed", String(show));
       toggle.setAttribute("aria-label", show ? "Sembunyikan password" : "Tampilkan password");
     });
@@ -75,6 +85,8 @@ export const init = (root) => {
     }
     if (mode === "register") register(data);
     else login(data);
+    // Leave nothing filled in for a browser to offer to save on the next page.
+    form.reset();
     location.replace(next);
   });
 };

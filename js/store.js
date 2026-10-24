@@ -9,8 +9,10 @@ const KEY = "pps-member-v1"; // + ":<username>" per account
 const SESSION_KEY = "pps-session-v1";
 const CHANGE = "pps:store-change";
 
-/** Starting balance for new demo accounts, so redemption can be tried out. */
-const DEMO_START_POINTS = 6200;
+/** Starting balance for new demo accounts. */
+const DEMO_START_POINTS = 2000;
+/** Bump to reset every saved demo account to DEMO_START_POINTS once. */
+const POINTS_RESET = 2;
 
 const CODE_CHARS = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 
@@ -36,6 +38,7 @@ export const newMember = ({ username, phone }) => {
     joined: now.toISOString(),
   });
   member.points = DEMO_START_POINTS;
+  member.pointsReset = POINTS_RESET;
   return member;
 };
 
@@ -58,12 +61,21 @@ const read = () => {
   if (!key) return emptyMember(); // logged out: a blank, unsaved guest state
   try {
     const raw = localStorage.getItem(key);
-    if (raw) return JSON.parse(raw);
+    if (raw) return resetPoints(key, JSON.parse(raw));
   } catch {
     // Storage blocked or corrupt: fall back to memory below.
   }
   return memory.members[key] ?? emptyMember();
 };
+
+/** Demo accounts saved before the current POINTS_RESET start over at DEMO_START_POINTS. */
+function resetPoints(key, state) {
+  if (state.pointsReset === POINTS_RESET) return state;
+  state.points = DEMO_START_POINTS;
+  state.pointsReset = POINTS_RESET;
+  persist(key, state);
+  return state;
+}
 
 const emit = () => window.dispatchEvent(new CustomEvent(CHANGE, { detail: read() }));
 

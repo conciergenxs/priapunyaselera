@@ -35,7 +35,7 @@ QUALITY = 80
 
 # Square crops (source → output stem, (left, top, right, bottom) in source px, size px).
 CROPS = {
-    "ava.png": [("ava-avatar", (330, 110, 770, 550), 256)],  # Passport holder avatar
+    "ava.png": [("ava-avatar", (310, 40, 1010, 740), 256)],  # Passport holder avatar (face)
 }
 
 LOGO = ASSETS / "home" / "logo.png"

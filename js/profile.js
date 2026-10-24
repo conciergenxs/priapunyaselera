@@ -7,7 +7,7 @@ import { logout } from "./auth.js";
 import { isIndonesianMobile } from "./redeem-data.js";
 
 const profile = {
-  name: "Avanelle Wijaya",
+  name: "Adrian Mahesa",
   handle: "@avanelle",
   phone: "+62 812 3456 7890",
 };

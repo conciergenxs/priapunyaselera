@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passport Preview — Pria Punya Selera</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0b0a09">
+  <link rel="icon" href="/assets/home/favicon/favicon-32.png" type="image/png" sizes="32x32">
+
+  <!-- Design-extraction route (e.g. for Figma): the Profile page's Passport
+       bottom sheet rendered as plain, always-visible DOM. Same markup, classes,
+       stylesheets and assets as the <dialog> in profil/index.html; keep the two
+       in sync. No scripts, no auth, no header/footer, no backdrop, no motion. -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- display=block: text renders only in Montserrat, never a fallback font. -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400..800;1,400..600&display=block">
+  <link rel="preload" href="/assets/qr.png" as="image">
+  <link rel="preload" href="/assets/optimized/ava-avatar-256.webp" as="image">
+
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/pages.css">
+  <style>
+    /* Neutral canvas; the sheet sits bottom-centre as it does when opened. */
+    body {
+      background-color: #ecebe8;
+    }
+
+    .passport-preview {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 100vh;
+      min-height: 100svh;
+    }
+
+    /* Static capture: no animations or transitions. */
+    .passport-preview *,
+    .passport-preview *::before,
+    .passport-preview *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  </style>
+</head>
+<body>
+  <main class="passport-preview" aria-label="Passport preview">
+    <!-- From profil/index.html: <dialog class="sheet" data-dialog="passport">. -->
+    <section class="sheet" aria-labelledby="passport-title">
+      <button class="sheet__handle" type="button" aria-label="Tutup passport"></button>
+      <div class="passport-sheet">
+        <h2 class="passport-sheet__title" id="passport-title">Passport</h2>
+        <p class="passport-sheet__text">Tunjukkan QR ini saat check-in di acara.</p>
+        <img class="passport-sheet__qr" src="/assets/qr.png" alt="QR code passport untuk check-in" width="310" height="316" fetchpriority="high">
+        <div class="passport-sheet__holder">
+          <div>
+            <p class="passport-sheet__label">Passport Holder</p>
+            <p class="passport-sheet__name">Adrian Mahesa</p>
+          </div>
+          <img class="passport-sheet__avatar" src="/assets/optimized/ava-avatar-256.webp" alt="" width="256" height="256" fetchpriority="high">
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
