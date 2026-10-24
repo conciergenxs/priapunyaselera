@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pria Punya Selera — Lebih dari Sekadar Selera</title>
+  <meta name="description" content="Temukan referensi, pengalaman, dan komunitas yang sejalan dengan selera lo. Kumpulin poin dan tukar dengan hadiah eksklusif di Pria Punya Selera.">
+  <meta name="theme-color" content="#0b0a09">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Pria Punya Selera — Lebih dari Sekadar Selera">
+  <meta property="og:description" content="Temukan referensi, pengalaman, dan komunitas yang sejalan dengan selera lo.">
+  <link rel="icon" href="assets/home/favicon/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="assets/home/favicon/favicon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="assets/home/favicon/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400..800&display=swap">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="/js/auth-boot.js"></script>
+  <script src="js/main.js" defer></script>
+  <script src="/js/account.js" type="module"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Langsung ke konten</a>
+
+  <header class="site-header theme-dark">
+    <div class="site-header__bar" aria-hidden="true"></div>
+    <div class="container site-header__inner">
+      <a class="site-header__brand" href="/">
+        <img src="assets/home/logo.png" alt="Pria Punya Selera — Beranda" width="404" height="304">
+      </a>
+
+      <!-- The toggle precedes the nav so the opened menu is next in tab order. -->
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
+        <span class="nav-toggle__icon" aria-hidden="true"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Navigasi utama">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="/event">Event</a></li>
+          <li><a class="site-nav__link" href="/artikel">Artikel</a></li>
+          <li><a class="site-nav__link" href="/loyalty">Loyalty</a></li>
+          <!-- Mobile menu only, for signed-in members (replaces the header profile button there). -->
+          <li class="site-nav__profile"><a class="site-nav__link" href="/profil/">Profile</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--secondary btn--sm site-header__login" href="/masuk/">Masuk</a>
+      <!-- Signed-in members see this instead of Masuk (html[data-auth="in"], js/account.js). -->
+      <div class="site-header__account">
+        <a class="header-points" href="/loyalty/">
+          <img src="/assets/coin.png" alt="" width="890" height="886">
+          <span data-points-balance>0</span><span class="visually-hidden"> Poin</span>
+        </a>
+        <a class="header-profile" href="/profil/" aria-label="Profil"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.75"/><path d="M4.75 19.5c1.2-3.4 4-5 7.25-5s6.05 1.6 7.25 5"/></svg></a>
+      </div>
+    </div>
+  </header>
+  <script>
+    // Size the compact nav pill before first paint; js/main.js keeps it updated.
+    document.querySelector(".site-header").style.setProperty("--nav-w", document.querySelector(".site-nav__list").getBoundingClientRect().width + "px");
+  </script>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero theme-dark" aria-labelledby="hero-title">
+      <div class="hero__media">
+        <img src="assets/home/optimized/hero-1600.webp"
+             srcset="assets/home/optimized/hero-960.webp 960w, assets/home/optimized/hero-1600.webp 1600w, assets/home/optimized/hero-2560.webp 2560w, assets/home/optimized/hero-3200.webp 3200w"
+             sizes="(max-aspect-ratio: 16/9) 178vh, 100vw"
+             alt="" width="1600" height="899" fetchpriority="high">
+      </div>
+
+      <div class="container">
+        <div class="hero__content">
+          <h1 class="display" id="hero-title">
+            <span class="line">Lebih dari</span>
+            <span class="line text-accent">Sekadar selera.</span>
+          </h1>
+          <p class="lead">Temukan referensi, pengalaman, dan komunitas yang sejalan dengan selera lo.</p>
+          <!-- Guests: Gabung Sekarang (primary) + Lihat Hadiah (secondary).
+               Signed in: Gabung Sekarang hides, Lihat Hadiah turns primary (main.css). -->
+          <div class="actions">
+            <a class="btn btn--primary guest-only" href="/daftar/">Gabung Sekarang</a>
+            <a class="btn btn--secondary hero__rewards" href="#hadiah">Lihat Hadiah</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Merchandise showcase -->
+    <section class="section showcase theme-light" id="hadiah" aria-labelledby="showcase-title">
+      <div class="container">
+        <div class="section-header split">
+          <h2 class="heading" id="showcase-title">
+            <span class="line">Banyak hadiah</span>
+            <span class="line"><span class="text-accent">menarik</span> nungguin lo.</span>
+          </h2>
+          <div>
+            <p class="description">Poin yang lo kumpulin bisa ditukar dengan berbagai hadiah menarik.</p>
+            <div class="actions">
+              <a class="btn btn--primary" href="/hadiah">Lihat Semua Hadiah</a>
+            </div>
+          </div>
+        </div>
+
+        <ul class="merch-grid" aria-label="Contoh hadiah">
+          <li class="merch-card">
+            <div class="merch-card__media">
+              <img src="assets/merch/optimized/cap-800.webp"
+                   srcset="assets/merch/optimized/cap-400.webp 400w, assets/merch/optimized/cap-800.webp 800w"
+                   sizes="(max-width: 39.99em) 74vw, (max-width: 63.99em) 45vw, (max-width: 80em) 22vw, 302px"
+                   alt="Topi baseball merah marun dengan logo PPS emas" width="800" height="800" loading="lazy">
+            </div>
+            <div class="merch-card__body">
+              <h3 class="merch-card__title"><a class="merch-card__link" href="/loyalty/?lanjut=merch:cap" data-auth-required>Cap</a></h3>
+              <p class="merch-card__points"><data value="1200">1.200</data> Poin</p>
+            </div>
+          </li>
+          <li class="merch-card">
+            <div class="merch-card__media">
+              <img src="assets/merch/optimized/tumbler-800.webp"
+                   srcset="assets/merch/optimized/tumbler-400.webp 400w, assets/merch/optimized/tumbler-800.webp 800w"
+                   sizes="(max-width: 39.99em) 74vw, (max-width: 63.99em) 45vw, (max-width: 80em) 22vw, 302px"
+                   alt="Tumbler merah marun dengan logo PPS emas" width="800" height="800" loading="lazy">
+            </div>
+            <div class="merch-card__body">
+              <h3 class="merch-card__title"><a class="merch-card__link" href="/loyalty/?lanjut=merch:tumbler" data-auth-required>Tumbler</a></h3>
+              <p class="merch-card__points"><data value="1500">1.500</data> Poin</p>
+            </div>
+          </li>
+          <li class="merch-card">
+            <div class="merch-card__media">
+              <img src="assets/merch/optimized/tote-bag-800.webp"
+                   srcset="assets/merch/optimized/tote-bag-400.webp 400w, assets/merch/optimized/tote-bag-800.webp 800w"
+                   sizes="(max-width: 39.99em) 74vw, (max-width: 63.99em) 45vw, (max-width: 80em) 22vw, 302px"
+                   alt="Tote bag kanvas merah marun dengan logo PPS emas" width="800" height="800" loading="lazy">
+            </div>
+            <div class="merch-card__body">
+              <h3 class="merch-card__title"><a class="merch-card__link" href="/loyalty/?lanjut=merch:tote-bag" data-auth-required>Tote Bag</a></h3>
+              <p class="merch-card__points"><data value="2000">2.000</data> Poin</p>
+            </div>
+          </li>
+          <li class="merch-card">
+            <div class="merch-card__media">
+              <img src="assets/merch/optimized/travel-bag-800.webp"
+                   srcset="assets/merch/optimized/travel-bag-400.webp 400w, assets/merch/optimized/travel-bag-800.webp 800w"
+                   sizes="(max-width: 39.99em) 74vw, (max-width: 63.99em) 45vw, (max-width: 80em) 22vw, 302px"
+                   alt="Travel bag merah marun dengan logo PPS emas" width="800" height="800" loading="lazy">
+            </div>
+            <div class="merch-card__body">
+              <h3 class="merch-card__title"><a class="merch-card__link" href="/loyalty/?lanjut=merch:travel-bag" data-auth-required>Travel Bag</a></h3>
+              <p class="merch-card__points"><data value="3500">3.500</data> Poin</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq theme-dark" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section-header section-header--center">
+          <h2 class="heading" id="faq-title">
+            <span class="line">Yang sering lo tanyain</span>
+            <span class="line text-accent">soal poin&nbsp;&amp;&nbsp;hadiah</span>
+          </h2>
+          <p class="description">Cari tahu semua hal tentang cara ngumpulin poin, pilih hadiah, dan manfaatnya di Pria Punya Selera.</p>
+        </div>
+
+        <!-- Draft answers: confirm against the loyalty programme rules before launch. -->
+        <div class="faq__list">
+          <details class="faq-item">
+            <summary class="faq-item__summary">
+              <span class="faq-item__question">Gimana cara ngumpulin poin?</span>
+              <span class="faq-item__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__answer">
+              <p>Gabung dan masuk ke akun PPS lo, lalu ikutan aktivitasnya: datang ke event, baca artikel, atau ikut program spesial yang lagi jalan. Setiap aktivitas yang memenuhi syarat otomatis nambahin poin ke akun lo.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__summary">
+              <span class="faq-item__question">Poin gue bisa dituker sama apa aja?</span>
+              <span class="faq-item__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__answer">
+              <p>Poin bisa lo tuker sama berbagai hadiah, mulai dari cap, tumbler, dan cardholder sampai travel bag. Katalog hadiahnya rutin diperbarui, jadi sering-sering cek biar nggak ketinggalan.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__summary">
+              <span class="faq-item__question">Gimana cara klaim hadiah?</span>
+              <span class="faq-item__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__answer">
+              <p>Masuk ke akun lo, buka katalog hadiah, pilih hadiah yang poinnya cukup, lalu konfirmasi penukaran. Setelah itu lo bakal dapet info lengkap soal pengiriman atau pengambilan hadiahnya.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__summary">
+              <span class="faq-item__question">Poin gue punya masa berlaku nggak?</span>
+              <span class="faq-item__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-item__answer">
+              <p>Punya. Setiap poin ada masa berlakunya, dan tanggal kedaluwarsanya bisa lo cek kapan aja di halaman akun. Jangan lupa tuker poin lo sebelum hangus, ya.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA: for guests only; hidden once signed in (main.css, .guest-only). -->
+    <section class="section cta theme-dark guest-only" id="gabung" aria-labelledby="cta-title">
+      <div class="container split">
+        <h2 class="heading" id="cta-title">
+          <span class="line">Gabung jadi bagian dari</span>
+          <span class="line">Pria Punya Selera.</span>
+        </h2>
+        <div class="cta__aside">
+          <p class="description">Kumpulin poin, dapetin hadiah eksklusif,<br> dan jadi bagian dari komunitas kami.</p>
+          <div class="actions">
+            <a class="btn btn--primary" href="/daftar/">Gabung Sekarang</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer theme-dark">
+    <div class="container">
+      <div class="site-footer__main">
+        <div class="site-footer__brand">
+          <a class="site-footer__logo" href="/">
+            <img src="assets/home/logo.png" alt="Pria Punya Selera — Beranda" width="404" height="304" loading="lazy">
+          </a>
+          <p class="site-footer__name">Pria Punya Selera</p>
+          <p class="site-footer__desc">Tempat buat pria yang selalu cari hal menarik,<br> dari gaya hidup sampai hal-hal yang punya cerita.</p>
+        </div>
+
+        <nav aria-label="Navigasi footer">
+          <ul class="site-footer__links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/artikel">Article</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="/event">Event</a></li>
+            <li><a href="/loyalty">Loyalty</a></li>
+            <li><a href="/hubungi-kami">Hubungi Kami</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p class="site-footer__copyright">© 2026 Pria Punya Selera. Semua hak dilindungi.</p>
+        <ul class="site-footer__legal">
+          <li><a href="/kebijakan-privasi">Kebijakan Privasi</a></li>
+          <li><a href="/syarat-ketentuan">Syarat &amp; Ketentuan</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

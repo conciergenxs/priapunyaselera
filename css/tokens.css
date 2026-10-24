@@ -1,0 +1,143 @@
+/* ==========================================================================
+   PPS design tokens
+   Single source of truth for colour, type, spacing, layout and shape.
+   ========================================================================== */
+
+:root {
+  /* ---- Colour: brand palette (derived from the section assets) ---- */
+  --color-burgundy: #8a1c1c;
+  --color-burgundy-hover: #a12424;
+  --color-burgundy-active: #721616;
+  --color-gold: #c9a86a;
+  --color-logo-gold: #dab55b;        /* flat mean of the logo's gold */
+  --color-logo-gold-hover: #e6c36b;
+  --color-logo-gold-active: #c8a14a;
+  --color-gold-stroke: rgb(218 181 91 / 0.6);  /* thin gold outlines */
+  --color-cream: #f4eee7;
+  --color-stone: #e5dacd;
+  --color-charcoal: #171311;
+  --color-ink: #0b0a09;
+  --color-white: #ffffff;
+
+  /* ---- Colour: text ---- */
+  --color-text-on-dark: #f6f2ec;
+  --color-text-on-dark-muted: rgb(246 242 236 / 0.74);
+  --color-text-on-light: #161311;
+  --color-text-on-light-muted: #4b423b;
+
+  /* ---- Colour: lines ---- */
+  --color-line-on-dark: rgb(246 242 236 / 0.14);
+  --color-line-on-dark-strong: rgb(246 242 236 / 0.28);
+
+  /* ---- Typography ---- */
+  --font-sans: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+
+  /* Type roles: size / line-height / tracking */
+  --fs-display: clamp(2.25rem, 1.15rem + 4.4vw, 3.875rem);    /* hero headline, max 62px */
+  --lh-display: 1;
+  --ls-display: -0.015em;
+
+  --fs-heading: clamp(2rem, 1.2rem + 2.8vw, 3.125rem);        /* section headings, max 50px */
+  --lh-heading: 1.05;
+  --ls-heading: -0.01em;
+
+  --fs-lead: clamp(1.0625rem, 0.98rem + 0.4vw, 1.25rem);      /* hero supporting copy */
+  --lh-lead: 1.55;
+
+  --fs-description: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);  /* section supporting copy */
+  --lh-description: 1.6;
+
+  --fs-card-title: clamp(1.125rem, 1.06rem + 0.25vw, 1.25rem);
+  --lh-card-title: 1.3;
+
+  --fs-meta: 0.8125rem;                                        /* card metadata (points) */
+  --ls-meta: 0.14em;
+
+  --fs-faq-question: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  --lh-faq-question: 1.4;
+  --fs-faq-answer: 1rem;
+  --lh-faq-answer: 1.7;
+
+  --fs-nav: 0.875rem;
+  --ls-nav: 0;
+
+  --fs-button: 0.875rem;
+  --ls-button: 0.08em;
+
+  --fs-footer-link: 1rem;
+  --fs-small: 0.875rem;
+  --lh-body: 1.6;
+
+  /* ---- Spacing scale (4px base) ---- */
+  --space-1: 0.25rem;   /*   4 */
+  --space-2: 0.5rem;    /*   8 */
+  --space-3: 0.75rem;   /*  12 */
+  --space-4: 1rem;      /*  16 */
+  --space-5: 1.5rem;    /*  24 */
+  --space-6: 2rem;      /*  32 */
+  --space-7: 2.5rem;    /*  40 */
+  --space-8: 3rem;      /*  48 */
+  --space-9: 4rem;      /*  64 */
+  --space-10: 5rem;     /*  80 */
+  --space-11: 6rem;     /*  96 */
+  --space-12: 8rem;     /* 128 */
+
+  /* Semantic rhythm, reused by every section */
+  --section-pad-y: clamp(var(--space-10), 3rem + 6vw, var(--space-12));
+  --gap-heading-description: var(--space-5);
+  --gap-description-actions: var(--space-6);
+  --gap-header-content: clamp(var(--space-8), 2rem + 3vw, var(--space-9));
+  --gap-grid: var(--space-5);
+
+  /* ---- Layout ---- */
+  --container-max: 80rem; /* 1280 */
+  --page-gutter: clamp(1.25rem, 5vw, 4rem);
+  --header-height: 5rem;
+
+  /* ---- Shape ---- */
+  --radius-card: 0.875rem;
+  --radius-pill: 999px;
+
+  /* ---- Controls ---- */
+  --btn-height: 3.25rem;
+  --btn-height-sm: 2.75rem;
+  --btn-pad-x: var(--space-7);
+  --btn-pad-x-sm: var(--space-5);
+  --btn-min-width: 13.5rem;
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 180ms;
+  --duration-base: 320ms;
+}
+
+@media (min-width: 64em) {
+  :root {
+    --header-height: 6rem;
+  }
+}
+
+/* Section themes: each section opts in, components read these variables. */
+.theme-dark {
+  --text: var(--color-text-on-dark);
+  --text-muted: var(--color-text-on-dark-muted);
+  --accent: var(--color-gold);
+  --line: var(--color-line-on-dark);
+  --focus-ring: var(--color-gold);
+  color: var(--text);
+}
+
+.theme-light {
+  --text: var(--color-text-on-light);
+  --text-muted: var(--color-text-on-light-muted);
+  --accent: var(--color-burgundy);
+  --line: rgb(22 19 17 / 0.12);
+  --focus-ring: var(--color-burgundy);
+  color: var(--text);
+}

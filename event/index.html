@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Event — Pria Punya Selera</title>
+  <meta name="description" content="Jadwal event Pria Punya Selera: kopdar komunitas, kelas, dan pengalaman eksklusif. Datang dan kumpulin poin.">
+  <meta name="theme-color" content="#0b0a09">
+  <link rel="icon" href="/assets/home/favicon/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/assets/home/favicon/favicon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/assets/home/favicon/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400..800&display=swap">
+
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/pages.css">
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="/js/auth-boot.js"></script>
+  <script src="/js/main.js" defer></script>
+  <script src="/js/app.js" type="module"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Langsung ke konten</a>
+
+  <header class="site-header theme-dark">
+    <div class="site-header__bar" aria-hidden="true"></div>
+    <div class="container site-header__inner">
+      <a class="site-header__brand" href="/">
+        <img src="/assets/home/logo.png" alt="Pria Punya Selera — Beranda" width="404" height="304">
+      </a>
+
+      <!-- The toggle precedes the nav so the opened menu is next in tab order. -->
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
+        <span class="nav-toggle__icon" aria-hidden="true"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Navigasi utama">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="/event/" aria-current="page">Event</a></li>
+          <li><a class="site-nav__link" href="/artikel/">Artikel</a></li>
+          <li><a class="site-nav__link" href="/loyalty/">Loyalty</a></li>
+          <!-- Mobile menu only, for signed-in members (replaces the header profile button there). -->
+          <li class="site-nav__profile"><a class="site-nav__link" href="/profil/">Profile</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--secondary btn--sm site-header__login" href="/masuk/">Masuk</a>
+      <!-- Signed-in members see this instead of Masuk (html[data-auth="in"], js/account.js). -->
+      <div class="site-header__account">
+        <a class="header-points" href="/loyalty/">
+          <img src="/assets/coin.png" alt="" width="890" height="886">
+          <span data-points-balance>0</span><span class="visually-hidden"> Poin</span>
+        </a>
+        <a class="header-profile" href="/profil/" aria-label="Profil"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.75"/><path d="M4.75 19.5c1.2-3.4 4-5 7.25-5s6.05 1.6 7.25 5"/></svg></a>
+      </div>
+    </div>
+  </header>
+  <script>
+    // Size the compact nav pill before first paint; js/main.js keeps it updated.
+    document.querySelector(".site-header").style.setProperty("--nav-w", document.querySelector(".site-nav__list").getBoundingClientRect().width + "px");
+  </script>
+
+  <main id="main" data-events>
+    <!-- Hero banner -->
+    <section class="page-hero page-hero--event theme-dark" aria-labelledby="page-title">
+      <div class="hero__media">
+        <img src="/assets/Hero/optimized/event-1600.webp"
+             srcset="/assets/Hero/optimized/event-960.webp 960w, /assets/Hero/optimized/event-1600.webp 1600w, /assets/Hero/optimized/event-2048.webp 2048w"
+             sizes="(max-aspect-ratio: 8/3) 192vh, 100vw"
+             alt="" width="2048" height="768" fetchpriority="high">
+      </div>
+      <div class="container">
+        <div class="page-hero__content">
+          <h1 class="display" id="page-title">
+            <span class="line">Lebih seru</span>
+            <span class="line text-accent">kalau dateng.</span>
+          </h1>
+          <p class="lead">Dari kopdar komunitas sampai pengalaman eksklusif. Datang, ketemu orang baru, dan kumpulin Points di setiap event.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Event list. Sample schedule: replace with confirmed events before launch. -->
+    <section class="section section--cream theme-light" id="jadwal" aria-labelledby="events-title">
+      <div class="container">
+        <div class="section-header split">
+          <h2 class="heading" id="events-title">
+            <span class="line">Jadwal event</span>
+            <span class="line"><span class="text-accent">terdekat</span>
+          </h2>
+          <p class="description">Daftar dulu biar kebagian tempat. Poin masuk ke akun lo setelah lo hadir di lokasi.</p>
+        </div>
+
+        <div class="events__toolbar">
+          <ul class="chip-group" aria-label="Filter kategori event">
+            <li><button class="chip" type="button" data-filter="semua" aria-pressed="true">Semua</button></li>
+            <li><button class="chip" type="button" data-filter="komunitas" aria-pressed="false">Komunitas</button></li>
+            <li><button class="chip" type="button" data-filter="kuliner" aria-pressed="false">Kuliner</button></li>
+            <li><button class="chip" type="button" data-filter="otomotif" aria-pressed="false">Otomotif</button></li>
+            <li><button class="chip" type="button" data-filter="musik" aria-pressed="false">Musik</button></li>
+            <li><button class="chip" type="button" data-filter="gaya-hidup" aria-pressed="false">Gaya Hidup</button></li>
+          </ul>
+          <!-- <p class="events__count" data-event-count aria-live="polite">6 event</p> -->
+        </div>
+
+        <ol class="event-list">
+          <li class="event-card" data-event="night-ride" data-category="otomotif">
+            <img class="event-card__img" src="/assets/events/PPS%20Night%20Ride.png"
+                 alt="" width="400" height="507" loading="lazy">
+            <div class="event-card__top">
+              <p class="event-card__date" aria-hidden="true"><span class="event-card__day">07</span> <span class="event-card__month">Nov</span></p>
+              <p class="event-card__category">Otomotif</p>
+            </div>
+            <div class="event-card__body">
+              <h3 class="event-card__title" id="ev-night-ride">PPS Night Ride</h3>
+              <ul class="event-card__info">
+                <li><svg class="event-card__icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="2"/><path d="M2 6.5h12M5.5 1.5v3M10.5 1.5v3"/></svg><time datetime="2026-11-07T19:00+07:00"><span class="visually-hidden">7 November 2026, </span>Sabtu · 19.00 WIB</time></li>
+                <li><svg class="event-card__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.5s4.5-4.2 4.5-7.8a4.5 4.5 0 0 0-9 0c0 3.6 4.5 7.8 4.5 7.8Z"/><circle cx="8" cy="6.6" r="1.6"/></svg>Jakarta Selatan</li>
+              </ul>
+              <div class="event-card__footer">
+                <p class="event-card__points">+200 Poin</p>
+                <button class="btn btn--gold btn--sm" type="button" data-register data-auth-required data-auth-action="daftar:night-ride" aria-pressed="false" aria-describedby="ev-night-ride">Daftar</button>
+              </div>
+            </div>
+          </li>
+          <li class="event-card" data-event="ngopi-bareng" data-category="komunitas">
+            <img class="event-card__img" src="/assets/events/Ngopi%20Bareng%20Komunitas.png"
+                 alt="" width="400" height="507" loading="lazy">
+            <div class="event-card__top">
+              <p class="event-card__date" aria-hidden="true"><span class="event-card__day">15</span> <span class="event-card__month">Nov</span></p>
+              <p class="event-card__category">Komunitas</p>
+            </div>
+            <div class="event-card__body">
+              <h3 class="event-card__title" id="ev-ngopi-bareng">Ngopi Bareng Komunitas</h3>
+              <ul class="event-card__info">
+                <li><svg class="event-card__icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="2"/><path d="M2 6.5h12M5.5 1.5v3M10.5 1.5v3"/></svg><time datetime="2026-11-15T09:00+07:00"><span class="visually-hidden">15 November 2026, </span>Minggu · 09.00 WIB</time></li>
+                <li><svg class="event-card__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.5s4.5-4.2 4.5-7.8a4.5 4.5 0 0 0-9 0c0 3.6 4.5 7.8 4.5 7.8Z"/><circle cx="8" cy="6.6" r="1.6"/></svg>Bandung</li>
+              </ul>
+              <div class="event-card__footer">
+                <p class="event-card__points">+100 Poin</p>
+                <button class="btn btn--gold btn--sm" type="button" data-register data-auth-required data-auth-action="daftar:ngopi-bareng" aria-pressed="false" aria-describedby="ev-ngopi-bareng">Daftar</button>
+              </div>
+            </div>
+          </li>
+          <li class="event-card" data-event="kelas-barista" data-category="kuliner">
+            <img class="event-card__img" src="/assets/events/Kelas%20Barista%20untuk%20Pemula.png"
+                 alt="" width="400" height="507" loading="lazy">
+            <div class="event-card__top">
+              <p class="event-card__date" aria-hidden="true"><span class="event-card__day">21</span> <span class="event-card__month">Nov</span></p>
+              <p class="event-card__category">Kuliner</p>
+            </div>
+            <div class="event-card__body">
+              <h3 class="event-card__title" id="ev-kelas-barista">Kelas Barista untuk Pemula</h3>
+              <ul class="event-card__info">
+                <li><svg class="event-card__icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="2"/><path d="M2 6.5h12M5.5 1.5v3M10.5 1.5v3"/></svg><time datetime="2026-11-21T13:00+07:00"><span class="visually-hidden">21 November 2026, </span>Sabtu · 13.00 WIB</time></li>
+                <li><svg class="event-card__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.5s4.5-4.2 4.5-7.8a4.5 4.5 0 0 0-9 0c0 3.6 4.5 7.8 4.5 7.8Z"/><circle cx="8" cy="6.6" r="1.6"/></svg>Jakarta Barat</li>
+              </ul>
+              <div class="event-card__footer">
+                <p class="event-card__points">+150 Poin</p>
+                <button class="btn btn--gold btn--sm" type="button" data-register data-auth-required data-auth-action="daftar:kelas-barista" aria-pressed="false" aria-describedby="ev-kelas-barista">Daftar</button>
+              </div>
+            </div>
+          </li>
+          <li class="event-card" data-event="selera-live" data-category="musik">
+            <img class="event-card__img" src="/assets/events/Selera%20Live%20Session.png"
+                 alt="" width="400" height="507" loading="lazy">
+            <div class="event-card__top">
+              <p class="event-card__date" aria-hidden="true"><span class="event-card__day">04</span> <span class="event-card__month">Des</span></p>
+              <p class="event-card__category">Musik</p>
+            </div>
+            <div class="event-card__body">
+              <h3 class="event-card__title" id="ev-selera-live">Selera Live Session</h3>
+              <ul class="event-card__info">
+                <li><svg class="event-card__icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="2"/><path d="M2 6.5h12M5.5 1.5v3M10.5 1.5v3"/></svg><time datetime="2026-12-04T20:00+07:00"><span class="visually-hidden">4 Desember 2026, </span>Jumat · 20.00 WIB</time></li>
+                <li><svg class="event-card__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.5s4.5-4.2 4.5-7.8a4.5 4.5 0 0 0-9 0c0 3.6 4.5 7.8 4.5 7.8Z"/><circle cx="8" cy="6.6" r="1.6"/></svg>Surabaya</li>
+              </ul>
+              <div class="event-card__footer">
+                <p class="event-card__points">+250 Poin</p>
+                <button class="btn btn--gold btn--sm" type="button" data-register data-auth-required data-auth-action="daftar:selera-live" aria-pressed="false" aria-describedby="ev-selera-live">Daftar</button>
+              </div>
+            </div>
+          </li>
+          <li class="event-card" data-event="kopdar-akhir-tahun" data-category="komunitas">
+            <img class="event-card__img" src="/assets/events/Kopdar%20Akhir%20Tahun%20PPS.png"
+                 alt="" width="400" height="507" loading="lazy">
+            <div class="event-card__top">
+              <p class="event-card__date" aria-hidden="true"><span class="event-card__day">19</span> <span class="event-card__month">Des</span></p>
+              <p class="event-card__category">Komunitas</p>
+            </div>
+            <div class="event-card__body">
+              <h3 class="event-card__title" id="ev-kopdar-akhir-tahun">Kopdar Akhir Tahun PPS</h3>
+              <ul class="event-card__info">
+                <li><svg class="event-card__icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="2"/><path d="M2 6.5h12M5.5 1.5v3M10.5 1.5v3"/></svg><time datetime="2026-12-19T18:00+07:00"><span class="visually-hidden">19 Desember 2026, </span>Sabtu · 18.00 WIB</time></li>
+                <li><svg class="event-card__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.5s4.5-4.2 4.5-7.8a4.5 4.5 0 0 0-9 0c0 3.6 4.5 7.8 4.5 7.8Z"/><circle cx="8" cy="6.6" r="1.6"/></svg>Yogyakarta</li>
+              </ul>
+              <div class="event-card__footer">
+                <p class="event-card__points">+300 Poin</p>
+                <button class="btn btn--gold btn--sm" type="button" data-register data-auth-required data-auth-action="daftar:kopdar-akhir-tahun" aria-pressed="false" aria-describedby="ev-kopdar-akhir-tahun">Daftar</button>
+              </div>
+            </div>
+          </li>
+          <li class="event-card" data-event="workshop-jaket-kulit" data-category="gaya-hidup">
+            <img class="event-card__img" src="/assets/events/Workshop%20Perawatan%20Jaket%20Kulit.png"
+                 alt="" width="400" height="507" loading="lazy">
+            <div class="event-card__top">
+              <p class="event-card__date" aria-hidden="true"><span class="event-card__day">09</span> <span class="event-card__month">Jan</span></p>
+              <p class="event-card__category">Gaya Hidup</p>
+            </div>
+            <div class="event-card__body">
+              <h3 class="event-card__title" id="ev-workshop-jaket-kulit">Workshop Perawatan Jaket Kulit</h3>
+              <ul class="event-card__info">
+                <li><svg class="event-card__icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="2"/><path d="M2 6.5h12M5.5 1.5v3M10.5 1.5v3"/></svg><time datetime="2027-01-09T14:00+07:00"><span class="visually-hidden">9 Januari 2027, </span>Sabtu · 14.00 WIB</time></li>
+                <li><svg class="event-card__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.5s4.5-4.2 4.5-7.8a4.5 4.5 0 0 0-9 0c0 3.6 4.5 7.8 4.5 7.8Z"/><circle cx="8" cy="6.6" r="1.6"/></svg>Jakarta Pusat</li>
+              </ul>
+              <div class="event-card__footer">
+                <p class="event-card__points">+150 Poin</p>
+                <button class="btn btn--gold btn--sm" type="button" data-register data-auth-required data-auth-action="daftar:workshop-jaket-kulit" aria-pressed="false" aria-describedby="ev-workshop-jaket-kulit">Daftar</button>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- App download banner. Hidden until the store links are live; remove `hidden` to show it. -->
+    <section class="section section--satin theme-dark" aria-labelledby="app-title" hidden>
+      <div class="container app-banner__inner">
+        <h2 class="heading" id="app-title">
+          <span class="line">Semua event,</span>
+          <span class="line text-accent">satu aplikasi.</span>
+        </h2>
+        <div class="app-banner__aside">
+          <p class="description">Pantau jadwal, simpan tiket, dan cek poin lo langsung dari HP.</p>
+          <div class="actions">
+            <span class="btn btn--secondary" aria-disabled="true">App Store</span>
+            <span class="btn btn--secondary" aria-disabled="true">Google Play</span>
+          </div>
+          <p class="app-banner__note">Aplikasi PPS segera hadir di App Store dan Google Play.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer theme-dark">
+    <div class="container">
+      <div class="site-footer__main">
+        <div class="site-footer__brand">
+          <a class="site-footer__logo" href="/">
+            <img src="/assets/home/logo.png" alt="Pria Punya Selera — Beranda" width="404" height="304" loading="lazy">
+          </a>
+          <p class="site-footer__name">Pria Punya Selera</p>
+          <p class="site-footer__desc">Tempat buat pria yang selalu cari hal menarik,<br> dari gaya hidup sampai hal-hal yang punya cerita.</p>
+        </div>
+
+        <nav aria-label="Navigasi footer">
+          <ul class="site-footer__links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/artikel/">Article</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/event/">Event</a></li>
+            <li><a href="/loyalty/">Loyalty</a></li>
+            <li><a href="/hubungi-kami">Hubungi Kami</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p class="site-footer__copyright">© 2026 Pria Punya Selera. Semua hak dilindungi.</p>
+        <ul class="site-footer__legal">
+          <li><a href="/kebijakan-privasi">Kebijakan Privasi</a></li>
+          <li><a href="/syarat-ketentuan">Syarat &amp; Ketentuan</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profil — Pria Punya Selera</title>
+  <meta name="description" content="Profil member Pria Punya Selera.">
+  <meta name="theme-color" content="#0b0a09">
+  <link rel="icon" href="/assets/home/favicon/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/assets/home/favicon/favicon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/assets/home/favicon/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400..800;1,400..600&display=swap">
+
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/pages.css">
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="/js/auth-boot.js"></script>
+  <script src="/js/main.js" defer></script>
+  <script src="/js/app.js" type="module"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Langsung ke konten</a>
+
+  <header class="site-header theme-dark">
+    <div class="site-header__bar" aria-hidden="true"></div>
+    <div class="container site-header__inner">
+      <a class="site-header__brand" href="/">
+        <img src="/assets/home/logo.png" alt="Pria Punya Selera — Beranda" width="404" height="304">
+      </a>
+
+      <!-- The toggle precedes the nav so the opened menu is next in tab order. -->
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
+        <span class="nav-toggle__icon" aria-hidden="true"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Navigasi utama">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="/event/">Event</a></li>
+          <li><a class="site-nav__link" href="/artikel/">Artikel</a></li>
+          <li><a class="site-nav__link" href="/loyalty/">Loyalty</a></li>
+          <!-- Mobile menu only, for signed-in members (replaces the header profile button there). -->
+          <li class="site-nav__profile"><a class="site-nav__link" href="/profil/" aria-current="page">Profile</a></li>
+        </ul>
+      </nav>
+
+      <!-- Dummy profile (prototype): the account area always shows, with the dummy balance. -->
+      <div class="site-header__account site-header__account--static">
+        <a class="header-points" href="/loyalty/">
+          <img src="/assets/coin.png" alt="" width="890" height="886">
+          <span data-profile-points>2.450</span><span class="visually-hidden"> Poin</span>
+        </a>
+        <a class="header-profile" href="/profil/" aria-label="Profil" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.75"/><path d="M4.75 19.5c1.2-3.4 4-5 7.25-5s6.05 1.6 7.25 5"/></svg></a>
+      </div>
+    </div>
+  </header>
+  <script>
+    // Size the compact nav pill before first paint; js/main.js keeps it updated.
+    document.querySelector(".site-header").style.setProperty("--nav-w", document.querySelector(".site-nav__list").getBoundingClientRect().width + "px");
+  </script>
+
+  <main id="main" data-profile>
+    <!-- Dummy profile (prototype): static data, no login needed. js/profile.js
+         keeps in-page edits for this page view only. -->
+    <section class="profile-hero theme-dark" aria-labelledby="page-title">
+      <div class="profile-hero__media">
+        <img src="/assets/optimized/ava-1130.webp"
+             srcset="/assets/optimized/ava-800.webp 800w, /assets/optimized/ava-1130.webp 1130w"
+             sizes="100vw" alt="Foto profil Avanelle Wijaya" width="1130" height="1160" fetchpriority="high">
+      </div>
+      <div class="container">
+        <h1 class="display profile-hero__name" id="page-title" data-profile-field="name">Avanelle Wijaya</h1>
+        <p class="profile-hero__phone" data-profile-field="phone">+62 812 3456 7890</p>
+      </div>
+    </section>
+
+    <section class="profile-menu-section theme-dark" aria-label="Menu profil">
+      <div class="container">
+        <ul class="profile-menu">
+          <li><button class="profile-menu__item" type="button" data-dialog-open="passport" aria-haspopup="dialog"><svg class="profile-menu__icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><path d="M5.5 16c.6-1.6 1.7-2.4 3-2.4s2.4.8 3 2.4M14 10h4M14 13.5h3"/></svg><span>Passport</span><svg class="profile-menu__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg></button></li>
+          <li><a class="profile-menu__item" href="/loyalty/pesanan/"><svg class="profile-menu__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg><span>Merchandise</span><svg class="profile-menu__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg></a></li>
+          <li><button class="profile-menu__item" type="button" data-dialog-open="edit" aria-haspopup="dialog"><svg class="profile-menu__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16v4Z"/><path d="m13.5 6.5 4 4"/></svg><span>Edit Profile</span><svg class="profile-menu__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg></button></li>
+          <li><button class="profile-menu__item" type="button" data-dialog-open="password" aria-haspopup="dialog"><svg class="profile-menu__icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5M12 14.5v2"/></svg><span>Ubah Password</span><svg class="profile-menu__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg></button></li>
+          <li><button class="profile-menu__item" type="button" data-dialog-open="logout" aria-haspopup="dialog"><svg class="profile-menu__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4H6a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h8M10 12h10M16.5 8.5 20 12l-3.5 3.5"/></svg><span>Logout</span><svg class="profile-menu__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg></button></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Passport: bottom sheet (js/profile.js). The QR is the supplied asset. -->
+    <dialog class="sheet" data-dialog="passport" data-sheet aria-labelledby="passport-title">
+      <button class="sheet__handle" type="button" data-dialog-close aria-label="Tutup passport"></button>
+      <div class="passport-sheet">
+        <h2 class="passport-sheet__title" id="passport-title">Passport</h2>
+        <p class="passport-sheet__text">Tunjukkan QR ini saat check-in di acara.</p>
+        <img class="passport-sheet__qr" src="/assets/qr.png" alt="QR code passport untuk check-in" width="310" height="316">
+        <div class="passport-sheet__holder">
+          <div>
+            <p class="passport-sheet__label">Passport Holder</p>
+            <p class="passport-sheet__name" data-profile-field="name">Avanelle Wijaya</p>
+          </div>
+          <img class="passport-sheet__avatar" src="/assets/optimized/ava-avatar-256.webp" alt="" width="256" height="256">
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Edit profile -->
+    <dialog class="dialog dialog--form surface" data-dialog="edit" aria-labelledby="edit-title">
+      <h2 class="panel__title" id="edit-title">Edit Profile</h2>
+      <form class="form" data-profile-form novalidate>
+            <div class="field">
+              <label class="field__label" for="name">Nama lengkap</label>
+              <input class="field__input" id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-error">
+              <p class="field__error" id="name-error" data-error-for="name"></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="handle">Username</label>
+              <input class="field__input" id="handle" name="handle" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required aria-describedby="handle-error">
+              <p class="field__error" id="handle-error" data-error-for="handle"></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="phone">Nomor WhatsApp</label>
+              <input class="field__input" id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="phone-error">
+              <p class="field__error" id="phone-error" data-error-for="phone"></p>
+            </div>
+        <p class="status" role="status" data-form-status></p>
+        <div class="dialog__actions">
+          <button class="btn btn--secondary btn--sm" type="button" data-dialog-close>Batal</button>
+          <button class="btn btn--primary btn--sm" type="submit">Simpan</button>
+        </div>
+      </form>
+    </dialog>
+
+    <!-- Change password: validates only; there is no account service to update. -->
+    <dialog class="dialog dialog--form surface" data-dialog="password" aria-labelledby="password-title">
+      <h2 class="panel__title" id="password-title">Ubah Password</h2>
+      <form class="form" data-password-form novalidate>
+            <div class="field">
+              <label class="field__label" for="current">Password sekarang</label>
+              <div class="field__control">
+                <input class="field__input" id="current" name="current" type="password" autocomplete="current-password" required aria-describedby="current-error">
+                <button class="field__toggle" type="button" aria-controls="current" aria-pressed="false" aria-label="Tampilkan password" data-password-toggle><svg class="field__toggle-show" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></svg><svg class="field__toggle-hide" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 18M10.6 5.6A10 10 0 0 1 12 5.5c6 0 9.5 6.5 9.5 6.5a17 17 0 0 1-3 3.8M6.4 6.9A17 17 0 0 0 2.5 12S6 18.5 12 18.5a9.6 9.6 0 0 0 4.4-1.1M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg></button>
+              </div>
+              <p class="field__error" id="current-error" data-error-for="current"></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="next">Password baru</label>
+              <div class="field__control">
+                <input class="field__input" id="next" name="next" type="password" autocomplete="new-password" required aria-describedby="next-hint next-error">
+                <button class="field__toggle" type="button" aria-controls="next" aria-pressed="false" aria-label="Tampilkan password" data-password-toggle><svg class="field__toggle-show" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></svg><svg class="field__toggle-hide" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 18M10.6 5.6A10 10 0 0 1 12 5.5c6 0 9.5 6.5 9.5 6.5a17 17 0 0 1-3 3.8M6.4 6.9A17 17 0 0 0 2.5 12S6 18.5 12 18.5a9.6 9.6 0 0 0 4.4-1.1M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg></button>
+              </div>
+              <p class="field__hint" id="next-hint">Minimal 8 karakter, campuran huruf dan angka.</p>
+              <p class="field__error" id="next-error" data-error-for="next"></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="confirm">Ulangi password baru</label>
+              <div class="field__control">
+                <input class="field__input" id="confirm" name="confirm" type="password" autocomplete="new-password" required aria-describedby="confirm-error">
+                <button class="field__toggle" type="button" aria-controls="confirm" aria-pressed="false" aria-label="Tampilkan password" data-password-toggle><svg class="field__toggle-show" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></svg><svg class="field__toggle-hide" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 18M10.6 5.6A10 10 0 0 1 12 5.5c6 0 9.5 6.5 9.5 6.5a17 17 0 0 1-3 3.8M6.4 6.9A17 17 0 0 0 2.5 12S6 18.5 12 18.5a9.6 9.6 0 0 0 4.4-1.1M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg></button>
+              </div>
+              <p class="field__error" id="confirm-error" data-error-for="confirm"></p>
+            </div>
+        <p class="status" role="status" data-form-status></p>
+        <div class="dialog__actions">
+          <button class="btn btn--secondary btn--sm" type="button" data-dialog-close>Batal</button>
+          <button class="btn btn--primary btn--sm" type="submit">Ubah Password</button>
+        </div>
+      </form>
+    </dialog>
+
+    <!-- Logout -->
+    <dialog class="dialog surface" data-dialog="logout" aria-labelledby="logout-title">
+      <form method="dialog">
+        <h2 class="panel__title" id="logout-title">Keluar dari akun?</h2>
+        <p class="dialog__text">Lo perlu masuk lagi untuk lihat poin dan riwayat penukaran.</p>
+        <div class="dialog__actions">
+          <button class="btn btn--secondary btn--sm" value="cancel">Batal</button>
+          <button class="btn btn--primary btn--sm" value="logout">Keluar</button>
+        </div>
+      </form>
+    </dialog>
+  </main>
+
+  <footer class="site-footer theme-dark">
+    <div class="container">
+      <div class="site-footer__main">
+        <div class="site-footer__brand">
+          <a class="site-footer__logo" href="/">
+            <img src="/assets/home/logo.png" alt="Pria Punya Selera — Beranda" width="404" height="304" loading="lazy">
+          </a>
+          <p class="site-footer__name">Pria Punya Selera</p>
+          <p class="site-footer__desc">Tempat buat pria yang selalu cari hal menarik,<br> dari gaya hidup sampai hal-hal yang punya cerita.</p>
+        </div>
+
+        <nav aria-label="Navigasi footer">
+          <ul class="site-footer__links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/artikel/">Article</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/event/">Event</a></li>
+            <li><a href="/loyalty/">Loyalty</a></li>
+            <li><a href="/hubungi-kami">Hubungi Kami</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p class="site-footer__copyright">© 2026 Pria Punya Selera. Semua hak dilindungi.</p>
+        <ul class="site-footer__legal">
+          <li><a href="/kebijakan-privasi">Kebijakan Privasi</a></li>
+          <li><a href="/syarat-ketentuan">Syarat &amp; Ketentuan</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

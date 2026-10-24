@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loyalty Program — Pria Punya Selera</title>
+  <meta name="description" content="Kumpulin poin dari aktivitas lo dan tukar dengan merch resmi serta akses eksklusif Pria Punya Selera.">
+  <meta name="theme-color" content="#0b0a09">
+  <link rel="icon" href="/assets/home/favicon/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/assets/home/favicon/favicon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/assets/home/favicon/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400..800&display=swap">
+
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/pages.css">
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="/js/auth-boot.js"></script>
+  <script src="/js/main.js" defer></script>
+  <script src="/js/app.js" type="module"></script>
+  <script src="/js/redeem.js" type="module"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Langsung ke konten</a>
+
+  <header class="site-header theme-dark">
+    <div class="site-header__bar" aria-hidden="true"></div>
+    <div class="container site-header__inner">
+      <a class="site-header__brand" href="/">
+        <img src="/assets/home/logo.png" alt="Pria Punya Selera — Beranda" width="404" height="304">
+      </a>
+
+      <!-- The toggle precedes the nav so the opened menu is next in tab order. -->
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
+        <span class="nav-toggle__icon" aria-hidden="true"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Navigasi utama">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="/event/">Event</a></li>
+          <li><a class="site-nav__link" href="/artikel/">Artikel</a></li>
+          <li><a class="site-nav__link" href="/loyalty/" aria-current="page">Loyalty</a></li>
+          <!-- Mobile menu only, for signed-in members (replaces the header profile button there). -->
+          <li class="site-nav__profile"><a class="site-nav__link" href="/profil/">Profile</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--secondary btn--sm site-header__login" href="/masuk/">Masuk</a>
+      <!-- Signed-in members see this instead of Masuk (html[data-auth="in"], js/account.js). -->
+      <div class="site-header__account">
+        <a class="header-points" href="/loyalty/">
+          <img src="/assets/coin.png" alt="" width="890" height="886">
+          <span data-points-balance>0</span><span class="visually-hidden"> Poin</span>
+        </a>
+        <a class="header-profile" href="/profil/" aria-label="Profil"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.75"/><path d="M4.75 19.5c1.2-3.4 4-5 7.25-5s6.05 1.6 7.25 5"/></svg></a>
+      </div>
+    </div>
+  </header>
+  <script>
+    // Size the compact nav pill before first paint; js/main.js keeps it updated.
+    document.querySelector(".site-header").style.setProperty("--nav-w", document.querySelector(".site-nav__list").getBoundingClientRect().width + "px");
+  </script>
+
+  <main id="main">
+    <!-- Hero banner -->
+    <section class="page-hero page-hero--loyalty theme-dark" aria-labelledby="page-title">
+      <div class="hero__media">
+        <img src="/assets/Hero/loyalty.png" alt="" width="1918" height="820" fetchpriority="high">
+      </div>
+      <div class="container">
+        <div class="page-hero__content">
+          <h1 class="display" id="page-title">
+            <span class="line">Setiap langkah</span>
+            <span class="line text-accent">jadi poin.</span>
+          </h1>
+          <p class="lead">Gabung Guild PPS, kumpulin poin dari aktivitas lo, lalu tukar dengan merch resmi dan akses eksklusif.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Earn points. Draft earning rules: confirm with the programme before launch. -->
+    <section class="section section--cream theme-light" id="cara-dapat-poin" aria-labelledby="earn-title">
+      <div class="container">
+        <div class="section-header split">
+          <h2 class="heading" id="earn-title">
+            <span class="line">Aktivitas lo,</span>
+            <span class="line text-accent">poin buat lo.</span>
+          </h2>
+          <p class="description">Poin masuk otomatis ke akun lo setiap kali aktivitasnya terverifikasi.</p>
+        </div>
+        <ol class="earn-grid">
+          <li class="earn-card surface panel">
+            <p class="earn-card__number" aria-hidden="true">01</p>
+            <h3 class="earn-card__title">Datang ke event</h3>
+            <p class="earn-card__text">Scan kode di lokasi event PPS, poinnya langsung masuk.</p>
+            <p class="meta">+100–300 Poin per event</p>
+          </li>
+          <li class="earn-card surface panel">
+            <p class="earn-card__number" aria-hidden="true">02</p>
+            <h3 class="earn-card__title">Baca artikel</h3>
+            <p class="earn-card__text">Selesaikan bacaan di halaman Artikel saat lo sudah masuk.</p>
+            <p class="meta">+10 Poin per artikel</p>
+          </li>
+          <li class="earn-card surface panel">
+            <p class="earn-card__number" aria-hidden="true">03</p>
+            <h3 class="earn-card__title">Lengkapi profil</h3>
+            <p class="earn-card__text">Isi data diri dan pasang foto profil di halaman Profil.</p>
+            <p class="meta">+50 Poin, sekali</p>
+          </li>
+          <li class="earn-card surface panel">
+            <p class="earn-card__number" aria-hidden="true">04</p>
+            <h3 class="earn-card__title">Snap &amp; Earn</h3>
+            <p class="earn-card__text">Foto struk belanja lo, kirim lewat WhatsApp, dan dapetin poin setelah terverifikasi.</p>
+            <!-- Points per receipt not set yet: add the amount after "+", e.g. "+50 Poin per struk terverifikasi". -->
+            <p class="meta">+ Poin per struk terverifikasi</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Guild Merch preview -->
+    <section class="section section--cream theme-light" aria-labelledby="merch-title">
+      <div class="container">
+        <div class="section-header split split--carousel">
+          <h2 class="heading" id="merch-title">
+            <span class="line">Merchandise</span>
+            <span class="line text-accent">pilihan.</span>
+          </h2>
+          <div class="carousel-head">
+            <p class="description">Pilih merchandise resmi dengan poin yang lo kumpulin dari berbagai aktivitas PPS.</p>
+            <!-- Disabled while all four items fit on screen; enable when the catalogue grows. -->
+            <div class="carousel-controls">
+              <button class="carousel-nav" type="button" disabled aria-label="Merchandise sebelumnya">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6 8.5 12l6 6"/></svg>
+              </button>
+              <button class="carousel-nav" type="button" disabled aria-label="Merchandise berikutnya">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6 15.5 12l-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <ul class="merch-grid" aria-label="Guild Merch">
+          <li class="merch-card">
+            <div class="merch-card__media">
+              <img src="/assets/merch/optimized/cap-800.webp"
+                   srcset="/assets/merch/optimized/cap-400.webp 400w, /assets/merch/optimized/cap-800.webp 800w"
+                   sizes="(max-width: 39.99em) 74vw, (max-width: 63.99em) 45vw, (max-width: 80em) 22vw, 302px"
+                   alt="Topi baseball merah marun dengan logo PPS emas" width="800" height="800" loading="lazy">
+            </div>
+            <div class="merch-card__body">
+              <h3 class="merch-card__title"><button class="merch-card__link" type="button" data-redeem-merch="cap" data-auth-required data-auth-action="merch:cap" aria-haspopup="dialog">Cap</button></h3>
+              <p class="merch-card__points"><data value="1200">1.200</data> Poin</p>
+            </div>
+          </li>
+          <li class="merch-card">
+            <div class="merch-card__media">
+              <img src="/assets/merch/optimized/tumbler-800.webp"
+                   srcset="/assets/merch/optimized/tumbler-400.webp 400w, /assets/merch/optimized/tumbler-800.webp 800w"
+                   sizes="(max-width: 39.99em) 74vw, (max-width: 63.99em) 45vw, (max-width: 80em) 22vw, 302px"
+                   alt="Tumbler merah marun dengan logo PPS emas" width="800" height="800" loading="lazy">
+            </div>
+            <div class="merch-card__body">
+              <h3 class="merch-card__title"><button class="merch-card__link" type="button" data-redeem-merch="tumbler" data-auth-required data-auth-action="merch:tumbler" aria-haspopup="dialog">Tumbler</button></h3>
+              <p class="merch-card__points"><data value="1500">1.500</data> Poin</p>
+            </div>
+          </li>
+          <li class="merch-card">
+            <div class="merch-card__media">
+              <img src="/assets/merch/optimized/tote-bag-800.webp"
+                   srcset="/assets/merch/optimized/tote-bag-400.webp 400w, /assets/merch/optimized/tote-bag-800.webp 800w"
+                   sizes="(max-width: 39.99em) 74vw, (max-width: 63.99em) 45vw, (max-width: 80em) 22vw, 302px"
+                   alt="Tote bag kanvas merah marun dengan logo PPS emas" width="800" height="800" loading="lazy">
+            </div>
+            <div class="merch-card__body">
+              <h3 class="merch-card__title"><button class="merch-card__link" type="button" data-redeem-merch="tote-bag" data-auth-required data-auth-action="merch:tote-bag" aria-haspopup="dialog">Tote Bag</button></h3>
+              <p class="merch-card__points"><data value="2000">2.000</data> Poin</p>
+            </div>
+          </li>
+          <li class="merch-card">
+            <div class="merch-card__media">
+              <img src="/assets/merch/optimized/travel-bag-800.webp"
+                   srcset="/assets/merch/optimized/travel-bag-400.webp 400w, /assets/merch/optimized/travel-bag-800.webp 800w"
+                   sizes="(max-width: 39.99em) 74vw, (max-width: 63.99em) 45vw, (max-width: 80em) 22vw, 302px"
+                   alt="Travel bag merah marun dengan logo PPS emas" width="800" height="800" loading="lazy">
+            </div>
+            <div class="merch-card__body">
+              <h3 class="merch-card__title"><button class="merch-card__link" type="button" data-redeem-merch="travel-bag" data-auth-required data-auth-action="merch:travel-bag" aria-haspopup="dialog">Travel Bag</button></h3>
+              <p class="merch-card__points"><data value="3500">3.500</data> Poin</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Exclusive Pass preview. Synchronize Fest 2026 and Joyland Sessions 2026 dates
+         are from the official posters; point costs are sample values. No brand
+         partnership is implied. Joyland poster: joylandfest.com (official). -->
+    <section class="section theme-dark" aria-labelledby="pass-title">
+      <div class="container">
+        <div class="section-header split split--wide-aside">
+          <h2 class="heading" id="pass-title">
+            <span class="line">Akses ke</span>
+            <span class="line text-accent">momen spesial.</span>
+          </h2>
+          <p class="description">Gunakan poin lo untuk mendapatkan akses ke berbagai acara dan pengalaman pilihan.</p>
+        </div>
+        <ul class="ticket-grid" aria-label="Exclusive Pass">
+          <li class="ticket" data-pass="synchronize-2026" data-points="3000" data-ends="2026-10-18">
+            <img class="ticket__poster" src="/assets/merch/optimized/synchronize-1600.webp"
+                 srcset="/assets/merch/optimized/synchronize-800.webp 800w, /assets/merch/optimized/synchronize-1600.webp 1600w"
+                 sizes="(min-width: 64em) 40rem, 100vw" alt="" width="1600" height="723" loading="lazy" style="object-position: 50% 30%">
+            <div class="ticket__main">
+              <h3 class="ticket__title"><button class="ticket__link" type="button" data-redeem-pass data-auth-required data-auth-action="pass:synchronize-2026" aria-haspopup="dialog">Synchronize Festival 2026</button></h3>
+              <p class="ticket__date"><time datetime="2026-10-16">16–18 Oktober 2026</time></p>
+            </div>
+            <p class="ticket__stub"><span class="ticket__points">3.000</span> Poin</p>
+          </li>
+          <li class="ticket ticket--light" data-pass="joyland-sessions-2026" data-points="2500" data-ends="2026-11-29">
+            <img class="ticket__poster" src="/assets/merch/joyland-sessions-2026.jpg"
+                 alt="" width="1600" height="802" loading="lazy" style="object-position: 50% 0%">
+            <div class="ticket__main">
+              <h3 class="ticket__title"><button class="ticket__link" type="button" data-redeem-pass data-auth-required data-auth-action="pass:joyland-sessions-2026" aria-haspopup="dialog">Joyland Sessions 2026</button></h3>
+              <p class="ticket__date"><time datetime="2026-11-28">28–29 November 2026</time></p>
+            </div>
+            <p class="ticket__stub"><span class="ticket__points">2.500</span> Poin</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- How to redeem -->
+    <section class="section section--cream theme-light" aria-labelledby="redeem-title">
+      <div class="container">
+        <div class="section-header section-header--center">
+          <h2 class="heading" id="redeem-title">
+            <span class="line">Cara tukar</span>
+            <span class="line text-accent">poin lo.</span>
+          </h2>
+        </div>
+        <ol class="step-list">
+          <li><span class="step-list__num" aria-hidden="true">01</span><p class="step-list__title">Masuk ke akun lo dan cek poin yang tersedia.</p></li>
+          <li><span class="step-list__num" aria-hidden="true">02</span><p class="step-list__title">Pilih hadiah yang ingin lo tukarkan dengan poin.</p></li>
+          <li><span class="step-list__num" aria-hidden="true">03</span><p class="step-list__title">Lengkapi data diri dan alamat pengiriman hadiah.</p></li>
+          <li><span class="step-list__num" aria-hidden="true">04</span><p class="step-list__title">Hadiah lo dikirim langsung ke alamat tujuan.</p></li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer theme-dark">
+    <div class="container">
+      <div class="site-footer__main">
+        <div class="site-footer__brand">
+          <a class="site-footer__logo" href="/">
+            <img src="/assets/home/logo.png" alt="Pria Punya Selera — Beranda" width="404" height="304" loading="lazy">
+          </a>
+          <p class="site-footer__name">Pria Punya Selera</p>
+          <p class="site-footer__desc">Tempat buat pria yang selalu cari hal menarik,<br> dari gaya hidup sampai hal-hal yang punya cerita.</p>
+        </div>
+
+        <nav aria-label="Navigasi footer">
+          <ul class="site-footer__links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/artikel/">Article</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/event/">Event</a></li>
+            <li><a href="/loyalty/">Loyalty</a></li>
+            <li><a href="/hubungi-kami">Hubungi Kami</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p class="site-footer__copyright">© 2026 Pria Punya Selera. Semua hak dilindungi.</p>
+        <ul class="site-footer__legal">
+          <li><a href="/kebijakan-privasi">Kebijakan Privasi</a></li>
+          <li><a href="/syarat-ketentuan">Syarat &amp; Ketentuan</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

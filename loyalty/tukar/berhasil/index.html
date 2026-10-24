@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Penukaran Berhasil — Pria Punya Selera</title>
+  <meta name="description" content="Penukaran merchandise lo berhasil dicatat.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0b0a09">
+  <link rel="icon" href="/assets/home/favicon/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/assets/home/favicon/favicon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/assets/home/favicon/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400..800&display=swap">
+
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/pages.css">
+  <script>document.documentElement.classList.add("js");</script>
+  <meta name="pps-auth" content="required">
+  <script src="/js/auth-boot.js"></script>
+  <script src="/js/main.js" defer></script>
+  <script src="/js/app.js" type="module"></script>
+  <script src="/js/redeem-order.js" type="module"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Langsung ke konten</a>
+
+  <header class="site-header theme-dark" data-header-solid>
+    <div class="site-header__bar" aria-hidden="true"></div>
+    <div class="container site-header__inner">
+      <a class="site-header__brand" href="/">
+        <img src="/assets/home/logo.png" alt="Pria Punya Selera — Beranda" width="404" height="304">
+      </a>
+
+      <!-- The toggle precedes the nav so the opened menu is next in tab order. -->
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
+        <span class="nav-toggle__icon" aria-hidden="true"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Navigasi utama">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="/event/">Event</a></li>
+          <li><a class="site-nav__link" href="/artikel/">Artikel</a></li>
+          <li><a class="site-nav__link" href="/loyalty/" aria-current="page">Loyalty</a></li>
+          <!-- Mobile menu only, for signed-in members (replaces the header profile button there). -->
+          <li class="site-nav__profile"><a class="site-nav__link" href="/profil/">Profile</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--secondary btn--sm site-header__login" href="/masuk/">Masuk</a>
+      <!-- Signed-in members see this instead of Masuk (html[data-auth="in"], js/account.js). -->
+      <div class="site-header__account">
+        <a class="header-points" href="/loyalty/">
+          <img src="/assets/coin.png" alt="" width="890" height="886">
+          <span data-points-balance>0</span><span class="visually-hidden"> Poin</span>
+        </a>
+        <a class="header-profile" href="/profil/" aria-label="Profil"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.75"/><path d="M4.75 19.5c1.2-3.4 4-5 7.25-5s6.05 1.6 7.25 5"/></svg></a>
+      </div>
+    </div>
+  </header>
+  <script>
+    // Size the compact nav pill before first paint; js/main.js keeps it updated.
+    document.querySelector(".site-header").style.setProperty("--nav-w", document.querySelector(".site-nav__list").getBoundingClientRect().width + "px");
+  </script>
+
+  <main id="main">
+    <section class="section section--cream section--page-top theme-light" aria-label="Penukaran berhasil">
+      <div class="container" data-order-view="success"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer theme-dark">
+    <div class="container">
+      <div class="site-footer__main">
+        <div class="site-footer__brand">
+          <a class="site-footer__logo" href="/">
+            <img src="/assets/home/logo.png" alt="Pria Punya Selera — Beranda" width="404" height="304" loading="lazy">
+          </a>
+          <p class="site-footer__name">Pria Punya Selera</p>
+          <p class="site-footer__desc">Tempat buat pria yang selalu cari hal menarik,<br> dari gaya hidup sampai hal-hal yang punya cerita.</p>
+        </div>
+
+        <nav aria-label="Navigasi footer">
+          <ul class="site-footer__links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/artikel/">Article</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/event/">Event</a></li>
+            <li><a href="/loyalty/">Loyalty</a></li>
+            <li><a href="/hubungi-kami">Hubungi Kami</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p class="site-footer__copyright">© 2026 Pria Punya Selera. Semua hak dilindungi.</p>
+        <ul class="site-footer__legal">
+          <li><a href="/kebijakan-privasi">Kebijakan Privasi</a></li>
+          <li><a href="/syarat-ketentuan">Syarat &amp; Ketentuan</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

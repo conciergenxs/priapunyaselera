@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Masuk — Pria Punya Selera</title>
+  <meta name="description" content="Masuk ke akun Pria Punya Selera lo.">
+  <meta name="theme-color" content="#0b0a09">
+  <link rel="icon" href="/assets/home/favicon/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/assets/home/favicon/favicon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/assets/home/favicon/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400..800&display=swap">
+
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/pages.css">
+  <script>document.documentElement.classList.add("js");</script>
+  <meta name="pps-auth" content="guest">
+  <script src="/js/auth-boot.js"></script>
+  <script src="/js/app.js" type="module"></script>
+</head>
+<body>
+  <main id="main" data-auth-page>
+    <!-- Login. Prototype: any input signs in (js/auth.js); there is no account service yet. -->
+    <section class="auth section--satin theme-dark" aria-labelledby="auth-title">
+      <div class="container">
+        <a class="auth__logo" href="/">
+          <img src="/assets/home/logo.png" alt="Pria Punya Selera — Beranda" width="404" height="304">
+        </a>
+        <div class="auth__card surface panel">
+          <h1 class="auth__title" id="auth-title">
+            <span class="line">Masuk ke</span>
+            <span class="line text-accent">akun lo.</span>
+          </h1>
+          <p class="auth__lead">Cek poin, baca artikel, daftar event, dan tukar hadiah dari satu akun.</p>
+          <p class="auth__notice" role="status" data-auth-reason hidden></p>
+
+          <form class="form" data-auth-form="login" novalidate>
+              <div class="field">
+                <label class="field__label" for="identifier">Username atau nomor WhatsApp</label>
+                <input class="field__input" id="identifier" name="identifier" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required aria-describedby="identifier-error">
+                <p class="field__error" id="identifier-error" data-error-for="identifier"></p>
+              </div>
+              <div class="field">
+                <label class="field__label" for="password">Password</label>
+                <div class="field__control">
+                  <input class="field__input" id="password" name="password" type="password" autocomplete="current-password" required aria-describedby="password-error">
+                  <button class="field__toggle" type="button" aria-controls="password" aria-pressed="false" aria-label="Tampilkan password" data-password-toggle><svg class="field__toggle-show" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></svg><svg class="field__toggle-hide" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 18M10.6 5.6A10 10 0 0 1 12 5.5c6 0 9.5 6.5 9.5 6.5a17 17 0 0 1-3 3.8M6.4 6.9A17 17 0 0 0 2.5 12S6 18.5 12 18.5a9.6 9.6 0 0 0 4.4-1.1M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg></button>
+                </div>
+                <p class="field__error" id="password-error" data-error-for="password"></p>
+              </div>
+            <div class="auth__actions">
+              <button class="btn btn--primary" type="submit">Masuk</button>
+            </div>
+          </form>
+
+          <p class="auth__switch">Belum punya akun? <a class="text-link" href="/daftar/" data-auth-switch>Gabung sekarang</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>

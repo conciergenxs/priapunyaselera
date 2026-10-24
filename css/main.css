@@ -1,0 +1,1208 @@
+/* ==========================================================================
+   PPS homepage styles. All values come from tokens.css.
+   1. Base   2. Layout   3. Type   4. Buttons   5. Header   6. Hero
+   7. Showcase   8. FAQ   9. CTA   10. Footer   11. Motion preferences
+   ========================================================================== */
+
+/* 1. Base ------------------------------------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: var(--header-height); /* anchors clear the fixed header */
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: var(--lh-body);
+  color: var(--color-text-on-dark);
+  background-color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring, var(--color-gold));
+  outline-offset: 3px;
+}
+
+/* 2. Layout ---------------------------------------------------------------- */
+
+.container {
+  width: min(100% - 2 * var(--page-gutter), var(--container-max));
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: var(--section-pad-y);
+}
+
+.section-header {
+  margin-bottom: var(--gap-header-content);
+}
+
+.section-header--center {
+  max-width: 52rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-header--center .description {
+  margin-inline: auto;
+}
+
+/* Heading on the left, supporting copy + action on the right content edge. */
+.split {
+  display: grid;
+  gap: var(--space-6);
+}
+
+@media (min-width: 80em) {
+  .split {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 20rem);
+    column-gap: var(--space-8);
+    align-items: end;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  z-index: 100;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-white);
+  color: var(--color-ink);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-bold);
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* 3. Type ------------------------------------------------------------------ */
+
+.display,
+.heading {
+  margin: 0;
+  font-weight: var(--fw-extrabold);
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.display {
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+}
+
+.heading {
+  font-size: var(--fs-heading);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+}
+
+.line {
+  display: block;
+}
+
+.text-accent {
+  color: var(--accent);
+}
+
+.lead,
+.description {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.lead {
+  max-width: 30em;
+  font-size: var(--fs-lead);
+  line-height: var(--lh-lead);
+  color: var(--text);
+}
+
+.description {
+  max-width: 34em;
+  font-size: var(--fs-description);
+  line-height: var(--lh-description);
+  color: var(--text-muted);
+}
+
+.display + .lead,
+.heading + .description {
+  margin-top: var(--gap-heading-description);
+}
+
+/* 4. Buttons --------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--btn-min-width);
+  min-height: var(--btn-height);
+  padding: 0 var(--btn-pad-x);
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  font-family: inherit;
+  font-size: var(--fs-button);
+  font-weight: var(--fw-bold);
+  line-height: 1;
+  letter-spacing: var(--ls-button);
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) ease,
+    border-color var(--duration-fast) ease,
+    color var(--duration-fast) ease,
+    transform var(--duration-fast) ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.btn--primary {
+  background-color: var(--color-burgundy);
+  color: var(--color-white);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-burgundy-hover);
+}
+
+.btn--primary:active {
+  background-color: var(--color-burgundy-active);
+}
+
+/* Secondary: logo-gold outline with white text; fills flat gold on hover. */
+.btn--secondary {
+  border-color: var(--color-logo-gold);
+  background-color: transparent;
+  color: var(--color-white);
+}
+
+.btn--secondary:hover {
+  border-color: var(--color-logo-gold);
+  background-color: var(--color-logo-gold);
+  color: var(--color-ink);
+}
+
+.btn--secondary:active {
+  border-color: var(--color-logo-gold-active);
+  background-color: var(--color-logo-gold-active);
+  color: var(--color-ink);
+}
+
+.btn--sm {
+  min-width: 0;
+  min-height: var(--btn-height-sm);
+  padding-inline: var(--btn-pad-x-sm);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--gap-description-actions);
+}
+
+/* Side-by-side buttons share one width: equal columns sized to the widest. */
+@media (min-width: 40em) {
+  .actions {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    width: max-content;
+  }
+}
+
+@media (max-width: 39.99em) {
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .actions .btn {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+/* 5. Header ---------------------------------------------------------------- */
+
+/* Fixed header with a glass bar behind its content. At the top of the page
+   there is no bar: the nav floats over the hero. As the page scrolls the bar
+   fades in (fully visible by a quarter of the way) and, on desktop, widens
+   from the nav to the page edges: js/main.js sets --p (0 → 1) and --nav-w
+   (nav list width; first set by the inline script after the header, before
+   first paint). */
+.site-header {
+  --p: 0;
+  --nav-w: 0px;
+  --bar-h: 3.5rem;
+  --bar-pad: clamp(0.75rem, 2vw, 1.75rem);   /* bar edge → logo / Masuk */
+  /* Pill edge → first / last link pill: matches the vertical inset,
+     (3.75rem bar − 2.75rem link) / 2. */
+  --bar-pad-nav: var(--space-2);
+  /* Inset of the expanded bar: the page container edge minus --bar-pad. */
+  --bar-end: calc((100% - min(100% - 2 * var(--page-gutter), var(--container-max))) / 2 - var(--bar-pad));
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 10;
+}
+
+/* Without JS the nav can't be measured, so show the expanded bar. Pages that
+   start on a light section (no dark hero) always show it (js/main.js too). */
+html:not(.js) .site-header,
+.site-header[data-header-solid] {
+  --p: 1;
+}
+
+/* z-index -1 keeps the bar behind the content inside the header's own stacking
+   context (the fixed header with z-index creates one). */
+.site-header__bar {
+  position: absolute;
+  z-index: -1;
+  top: calc((var(--header-height) - var(--bar-h)) / 2);
+  left: var(--bar-end);
+  right: var(--bar-end);
+  height: var(--bar-h);
+  border: 1px solid var(--color-gold-stroke);
+  border-radius: var(--radius-pill);
+  background-color: rgb(11 10 9 / 0.72);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: 0 10px 30px -12px rgb(0 0 0 / 0.45);
+  opacity: min(1, var(--p) * 4);
+}
+
+/* The open mobile menu always sits on the bar. */
+.site-header.is-open .site-header__bar {
+  opacity: 1;
+}
+
+@media (min-width: 64em) {
+  .site-header {
+    --bar-h: 3.75rem;
+    --bar-start: calc((100% - var(--nav-w)) / 2 - var(--bar-pad-nav));
+  }
+
+  .site-header__bar {
+    left: calc(var(--bar-start) + (var(--bar-end) - var(--bar-start)) * var(--p));
+    right: calc(var(--bar-start) + (var(--bar-end) - var(--bar-start)) * var(--p));
+  }
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  height: var(--header-height);
+}
+
+.site-header__brand {
+  flex: none;
+  margin-right: auto;
+}
+
+/* Bar order on small screens: logo … Masuk, menu toggle. */
+.site-header__login {
+  order: 1;
+}
+
+/* Expanded bar: MASUK becomes a flat logo-gold button with black text. */
+.site-header.is-expanded .site-header__login {
+  border-color: var(--color-logo-gold);
+  background-color: var(--color-logo-gold);
+  color: var(--color-ink);
+}
+
+.site-header.is-expanded .site-header__login:hover {
+  border-color: var(--color-logo-gold-hover);
+  background-color: var(--color-logo-gold-hover);
+}
+
+/* Signed-in account area, in place of MASUK (html[data-auth="in"] is set
+   before first paint by js/auth-boot.js). The points link is always an
+   outline; the profile button fills gold once the bar has expanded, like
+   MASUK. */
+.site-header__account {
+  display: none;
+  align-items: center;
+  gap: var(--space-3);
+  order: 1;
+}
+
+:root[data-auth="in"] .site-header__login {
+  display: none;
+}
+
+:root[data-auth="in"] .site-header__account,
+.site-header__account--static {
+  display: flex;
+}
+
+/* Guest-only content (homepage "Gabung Sekarang" + CTA section). */
+:root[data-auth="in"] .guest-only {
+  display: none;
+}
+
+/* Signed in, "Lihat Hadiah" is the hero's only action, so it takes the
+   primary style (same values as .btn--primary). */
+:root[data-auth="in"] .hero__rewards {
+  border-color: transparent;
+  background-color: var(--color-burgundy);
+  color: var(--color-white);
+}
+
+:root[data-auth="in"] .hero__rewards:hover {
+  background-color: var(--color-burgundy-hover);
+}
+
+:root[data-auth="in"] .hero__rewards:active {
+  background-color: var(--color-burgundy-active);
+}
+
+.header-points {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--btn-height-sm);
+  padding-inline: var(--space-4) var(--space-5);
+  border: 1px solid var(--color-logo-gold);
+  border-radius: var(--radius-pill);
+  background-color: transparent;
+  color: var(--color-white);
+  font-size: var(--fs-button);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-button);
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: border-color var(--duration-fast) ease, color var(--duration-fast) ease;
+}
+
+.header-points:hover {
+  border-color: var(--color-logo-gold-hover);
+  color: var(--color-logo-gold);
+}
+
+.header-points img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.header-profile {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  width: var(--btn-height-sm);
+  height: var(--btn-height-sm);
+  border: 1px solid var(--color-logo-gold);
+  border-radius: 50%;
+  background-color: transparent;
+  color: var(--color-white);
+  transition: background-color var(--duration-fast) ease, border-color var(--duration-fast) ease, color var(--duration-fast) ease;
+}
+
+.header-profile svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+
+.header-profile:hover,
+.site-header.is-expanded .header-profile {
+  border-color: var(--color-logo-gold);
+  background-color: var(--color-logo-gold);
+  color: var(--color-ink);
+}
+
+.site-header.is-expanded .header-profile:hover {
+  border-color: var(--color-logo-gold-hover);
+  background-color: var(--color-logo-gold-hover);
+}
+
+.nav-toggle {
+  order: 2;
+}
+
+/* Logo is sized by height only so the horizontal lockup keeps its aspect ratio. */
+.site-header__brand img,
+.site-footer__logo img {
+  width: auto;
+  max-width: none;
+}
+
+.site-header__brand img {
+  height: 2.55rem;
+}
+
+.site-nav__list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav__link {
+  position: relative;
+  display: block;
+  font-size: var(--fs-nav);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-nav);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.nav-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: var(--btn-height-sm);
+  height: var(--btn-height-sm);
+  padding: 0;
+  border: 1px solid color-mix(in srgb, currentColor 55%, transparent);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) ease, border-color var(--duration-fast) ease;
+}
+
+.nav-toggle:hover {
+  border-color: currentColor;
+  background-color: color-mix(in srgb, currentColor 10%, transparent);
+}
+
+.nav-toggle__icon,
+.nav-toggle__icon::before,
+.nav-toggle__icon::after {
+  display: block;
+  width: 1.125rem;
+  height: 2px;
+  border-radius: 1px;
+  background-color: currentColor;
+  transition: transform var(--duration-fast) ease, background-color var(--duration-fast) ease;
+}
+
+.nav-toggle__icon {
+  position: relative;
+}
+
+.nav-toggle__icon::before,
+.nav-toggle__icon::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Matching transform lists so the burger → close morph interpolates cleanly. */
+.nav-toggle__icon::before {
+  transform: translateY(-6px) rotate(0deg);
+}
+
+.nav-toggle__icon::after {
+  transform: translateY(6px) rotate(0deg);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon {
+  background-color: transparent;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon::before {
+  transform: translateY(0) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon::after {
+  transform: translateY(0) rotate(-45deg);
+}
+
+/* Profile lives in the mobile menu (below); desktop keeps the round button. */
+.site-nav__profile {
+  display: none;
+}
+
+/* Mobile + tablet: collapsible panel under the header bar. */
+@media (max-width: 63.99em) {
+  /* Roomier scrolled bar: 12px above and below the 44px controls. */
+  .site-header {
+    --bar-h: 4.25rem;
+  }
+
+  .nav-toggle {
+    border-color: var(--color-logo-gold);
+  }
+
+  .nav-toggle:hover {
+    border-color: var(--color-logo-gold-hover);
+  }
+
+  /* No profile button here: Profile is a menu item instead, shown whenever the
+     account area is (signed in, or the dummy Profile page). */
+  .header-profile {
+    display: none;
+  }
+
+  :root[data-auth="in"] .site-nav__profile,
+  .site-header:has(.site-header__account--static) .site-nav__profile {
+    display: list-item;
+  }
+
+  /* The panel uses the same glass + gold treatment and edges as the bar. */
+  .js .site-nav {
+    position: absolute;
+    top: 100%;
+    left: var(--bar-end);
+    right: var(--bar-end);
+    display: none;
+    padding: var(--space-2) var(--space-5);
+    border: 1px solid var(--color-gold-stroke);
+    border-radius: 1.5rem;
+    background-color: rgb(11 10 9 / 0.9);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    backdrop-filter: blur(18px) saturate(140%);
+  }
+
+  .js .site-nav__list li + li .site-nav__link {
+    border-top: 1px solid var(--line);
+  }
+
+  .js .site-header.is-open .site-nav {
+    display: block;
+  }
+
+  .js .site-nav__list {
+    flex-direction: column;
+  }
+
+  .js .site-nav__link {
+    padding-block: var(--space-4);
+    font-size: 1rem;
+  }
+
+  /* Without JS the links stay visible as a wrapped row. */
+  html:not(.js) .site-header__inner {
+    flex-wrap: wrap;
+    height: auto;
+    padding-block: var(--space-4);
+  }
+
+  html:not(.js) .site-nav {
+    order: 3;
+    width: 100%;
+  }
+
+  html:not(.js) .site-nav__list {
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-5);
+  }
+
+  html:not(.js) .nav-toggle {
+    display: none;
+  }
+}
+
+@media (min-width: 64em) {
+  .site-header__inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+  }
+
+  .site-header__brand {
+    justify-self: start;
+  }
+
+  .site-header__brand img {
+    height: 3.4rem;
+  }
+
+  .site-header__login {
+    justify-self: end;
+  }
+
+  .site-header__account {
+    justify-self: end;
+  }
+
+  /* Each link is a pill that fills on hover; see --bar-pad-nav for the inset. */
+  .site-nav__list {
+    gap: var(--space-1);
+  }
+
+  .site-nav__link {
+    display: flex;
+    align-items: center;
+    height: 2.75rem;
+    padding-inline: var(--space-5);
+    border-radius: var(--radius-pill);
+    transition: background-color var(--duration-fast) ease;
+  }
+
+  .site-nav__link:hover,
+  .site-nav__link:focus-visible {
+    background-color: rgb(246 242 236 / 0.12);
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+}
+
+/* 6. Hero ------------------------------------------------------------------ */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(40rem, 100vh, 67.5rem);
+  min-height: clamp(40rem, 100svh, 67.5rem);
+  padding-block: calc(var(--header-height) + var(--space-9)) clamp(var(--space-8), 1rem + 4vw, var(--space-10));
+  overflow: hidden;
+  background-color: var(--color-ink);
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 76% 40%;
+}
+
+/* Legibility scrims: header at the top, copy at the bottom-left. */
+.hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgb(11 10 9 / 0.6) 0%, rgb(11 10 9 / 0) 24%),
+    linear-gradient(0deg, rgb(11 10 9 / 0.88) 0%, rgb(11 10 9 / 0.4) 38%, rgb(11 10 9 / 0) 62%),
+    linear-gradient(90deg, rgb(11 10 9 / 0.5) 0%, rgb(11 10 9 / 0) 55%);
+}
+
+.hero__content {
+  max-width: 46rem;
+}
+
+@media (min-width: 48em) {
+  .hero__media img {
+    object-position: 70% 50%;
+  }
+}
+
+/* 7. Showcase -------------------------------------------------------------- */
+
+.showcase {
+  background-color: var(--color-cream);
+  background-image: url("../assets/home/optimized/showcase-1920.webp");
+  background-position: center;
+  background-size: cover;
+}
+
+@media (min-width: 64em) {
+  .showcase {
+    background-image: url("../assets/home/optimized/showcase-2560.webp");
+  }
+}
+
+.merch-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap-grid);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 64em) {
+  .merch-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Phones: a swipeable row that bleeds to the screen edges. */
+@media (max-width: 39.99em) {
+  .merch-grid {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 74%;
+    margin-inline: calc(-1 * var(--page-gutter));
+    padding: 0 var(--page-gutter) var(--space-4);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--page-gutter);
+    scrollbar-width: none;
+  }
+
+  .merch-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .merch-card {
+    scroll-snap-align: start;
+  }
+}
+
+/* The square media box and the body still set the card's size; the photo is
+   lifted out of the box to fill the whole card, with the text over its fade. */
+.merch-card {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--color-gold-stroke);
+  border-radius: var(--radius-card);
+  background-color: var(--color-charcoal);
+  box-shadow:
+    0 1px 2px rgb(22 19 17 / 0.06),
+    0 18px 40px -24px rgb(22 19 17 / 0.4);
+}
+
+.merch-card__media {
+  aspect-ratio: 1;
+}
+
+.merch-card__media img {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Readability fade, bottom of the image only. */
+.merch-card::after {
+  content: "";
+  position: absolute;
+  inset: 45% 0 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgb(11 10 9 / 0) 0%, rgb(11 10 9 / 0.55) 55%, rgb(11 10 9 / 0.82) 100%);
+}
+
+.merch-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5);
+}
+
+.merch-card__title {
+  margin: 0;
+  font-size: var(--fs-card-title);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-card-title);
+  color: var(--color-white);
+}
+
+.merch-card__points {
+  margin: 0;
+  font-size: var(--fs-meta);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-meta);
+  text-transform: uppercase;
+  color: var(--color-logo-gold);
+}
+
+/* Clickable merch cards (homepage, Loyalty): the title link covers the card. */
+.merch-card__link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.merch-card__link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.merch-card:has(.merch-card__link:focus-visible) {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 4px;
+}
+
+.merch-card__link:focus-visible {
+  outline: none;
+}
+
+/* 8. FAQ ------------------------------------------------------------------- */
+
+.faq {
+  --faq-pad-x: clamp(var(--space-5), 3vw, var(--space-6));
+  background-color: #2a0505;
+  background-image: url("../assets/home/optimized/faq-1280.webp");
+  background-position: center;
+  background-size: cover;
+}
+
+@media (min-width: 40em) {
+  .faq {
+    background-image: url("../assets/home/optimized/faq-1920.webp");
+  }
+}
+
+@media (min-width: 90em) {
+  .faq {
+    background-image: url("../assets/home/optimized/faq-2560.webp");
+  }
+}
+
+.faq__list {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 55rem;
+  margin-inline: auto;
+}
+
+.faq-item {
+  border: 1px solid var(--color-line-on-dark-strong);
+  border-radius: var(--radius-card);
+  background-color: rgb(11 10 9 / 0.22);
+  transition: border-color var(--duration-fast) ease, background-color var(--duration-fast) ease;
+}
+
+.faq-item:hover,
+.faq-item[open] {
+  border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+}
+
+.faq-item[open] {
+  background-color: rgb(11 10 9 / 0.32);
+}
+
+.faq-item__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding: var(--space-5) var(--faq-pad-x);
+  border-radius: var(--radius-card);
+  list-style: none;
+  cursor: pointer;
+}
+
+.faq-item__summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item__question {
+  font-size: var(--fs-faq-question);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-faq-question);
+}
+
+.faq-item__icon {
+  position: relative;
+  flex: none;
+  width: 2rem;
+  height: 2rem;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  color: var(--accent);
+}
+
+.faq-item__icon::before,
+.faq-item__icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.75rem;
+  height: 1.5px;
+  background-color: currentColor;
+  transform: translate(-50%, -50%);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.faq-item__icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.faq-item[open] .faq-item__icon::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.faq-item__answer {
+  padding: 0 var(--faq-pad-x) var(--space-6);
+}
+
+.faq-item__answer p {
+  max-width: 62ch;
+  margin: 0;
+  font-size: var(--fs-faq-answer);
+  line-height: var(--lh-faq-answer);
+  color: var(--text-muted);
+}
+
+/* Smooth open/close where ::details-content is supported; instant elsewhere. */
+@supports selector(::details-content) {
+  .faq-item::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition:
+      block-size var(--duration-base) var(--ease-out),
+      content-visibility var(--duration-base) allow-discrete;
+  }
+
+  .faq-item[open]::details-content {
+    block-size: auto;
+  }
+}
+
+/* 9. CTA ------------------------------------------------------------------- */
+
+/* Set --cta-image to url("../assets/home/optimized/cta-2560.webp") once the
+   CTA background is supplied; the top layer fades it into the footer. */
+.cta {
+  --cta-image: none;
+  padding-bottom: clamp(var(--space-9), 5vw, var(--space-10));
+  background-color: var(--color-ink);
+  background-image:
+    linear-gradient(180deg, rgb(11 10 9 / 0) 45%, var(--color-ink) 100%),
+    var(--cta-image),
+    linear-gradient(180deg, var(--color-charcoal) 0%, var(--color-ink) 100%);
+  background-position: center;
+  background-size: cover;
+}
+
+/* Two-column CTA: copy column sizes to its two designed lines, right-aligned,
+   with the button on the same right edge as the footer below. */
+@media (min-width: 80em) {
+  /* The designed lines need ~737px at 50px; a 40px gap keeps them whole at 1280. */
+  .cta .split {
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: var(--space-7);
+    align-items: center;
+  }
+
+  .cta .heading .line {
+    white-space: nowrap;
+  }
+
+  .cta__aside {
+    text-align: right;
+  }
+
+  .cta__aside .description {
+    max-width: none;
+  }
+
+  .cta__aside .actions {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 39.99em) {
+  .cta__aside .description br {
+    display: none;
+  }
+}
+
+/* 10. Footer --------------------------------------------------------------- */
+
+/* Full-bleed top stroke, so it meets the section above edge to edge. */
+.site-footer {
+  border-top: 1px solid var(--line);
+  background-color: var(--color-ink);
+}
+
+.site-footer__main {
+  display: grid;
+  gap: var(--space-8);
+  padding-block: clamp(var(--space-9), 6vw, var(--space-11)) var(--space-9);
+}
+
+@media (min-width: 64em) {
+  /* Brand left; link grid sized to its content on the right edge, centred
+     against the brand block. */
+  .site-footer__main {
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: var(--space-9);
+    align-items: center;
+  }
+}
+
+.site-footer__logo {
+  display: inline-block;
+}
+
+.site-footer__logo img {
+  height: 4rem;
+}
+
+.site-footer__name {
+  margin: var(--space-4) 0 0;
+  font-size: 1.125rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.4;
+}
+
+.site-footer__desc {
+  max-width: 30rem;
+  margin: var(--space-2) 0 0;
+  color: var(--text-muted);
+}
+
+/* Two-line break on wider screens; text flows freely on phones. */
+@media (max-width: 39.99em) {
+  .site-footer__desc br {
+    display: none;
+  }
+}
+
+.site-footer__links {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  gap: var(--space-5) var(--space-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Three equal columns from tablet up: a compact block when stacked; on desktop
+   fixed 8rem columns on an even pitch (214px at 1440), the last ending on the
+   container edge. */
+@media (min-width: 40em) {
+  .site-footer__links {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 34rem;
+  }
+}
+
+@media (min-width: 64em) {
+  .site-footer__links {
+    grid-template-columns: repeat(3, 8rem);
+    column-gap: clamp(var(--space-8), 6vw, 5.375rem);
+    max-width: none;
+  }
+
+  /* Optical centring: the logo PNG carries transparent padding at the top, so
+     centre the links on the visible brand block rather than its box. */
+  .site-footer__main nav {
+    margin-top: var(--space-3);
+  }
+}
+
+.site-footer__links a,
+.site-footer__legal a {
+  text-decoration: none;
+  transition: color var(--duration-fast) ease;
+}
+
+.site-footer__links a {
+  font-size: var(--fs-footer-link);
+  font-weight: var(--fw-medium);
+}
+
+.site-footer__links a:hover,
+.site-footer__legal a:hover {
+  color: var(--accent);
+}
+
+.site-footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-6);
+  padding-block: var(--space-6) var(--space-8);
+  border-top: 1px solid var(--line);
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+}
+
+.site-footer__copyright {
+  margin: 0;
+}
+
+.site-footer__legal {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer__legal li + li::before {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  margin-inline: var(--space-4);
+  vertical-align: -0.125em;
+  background-color: var(--color-line-on-dark-strong);
+}
+
+/* 11. Motion preferences --------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
